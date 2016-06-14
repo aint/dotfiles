@@ -100,7 +100,7 @@ GIT_PROMPT_ONLY_IN_REPO=1
 
 
 function __clean-cask {
-    caskBasePath="/opt/homebrew-cask/Caskroom"
+    caskBasePath="/usr/local/Caskroom"
     local cask="$1"
     local caskDirectory="$caskBasePath/$cask"
     local versionsToRemove="$(ls -r $caskDirectory | sed 1,1d)"
