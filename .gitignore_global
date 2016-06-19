@@ -1,0 +1,22 @@
+### OSX ###
+.DS_Store
+
+### Eclipse ###
+.settings
+.classpath
+.project
+
+### IntelliJ ###
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+
+### Maven ###
+target/
+
+### Gradle ###
+.gradle
+build/
+
