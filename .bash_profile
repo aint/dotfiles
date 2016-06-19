@@ -67,7 +67,7 @@ export HISTCONTROL="ignoreboth:erasedups"
 alias idproj="cd ~/projects/IdeaProjects"
 alias jshell="/Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/bin/jshell"
 alias gnucash="cd /Users/aint/projects/AndroidStudioProjects/gnucash-android/"
-alias mysql="cd /usr/local/mysql/bin; ./mysql -u root -p"
+alias mysql="mysql -u root -p"
 
 # Recursively delete .DS_Store files in current directory
 alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
