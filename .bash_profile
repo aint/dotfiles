@@ -79,7 +79,7 @@ alias java8="export JAVA_HOME=$JAVA_8_HOME"
 alias finderShowHidden="defaults write com.apple.finder ShowAllFiles TRUE"
 alias finderHideHidden="defaults write com.apple.finder ShowAllFiles FALSE"
 
-
+alias brew_update="brew update && echo '==> Cask Outdated' && brew-cask-outdated"
 
 # ------------------------------------------------------------
 # Misc
