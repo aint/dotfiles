@@ -81,6 +81,8 @@ alias finderHideHidden="defaults write com.apple.finder ShowAllFiles FALSE"
 
 alias brew_update="brew update && echo '==> Cask Outdated' && brew-cask-outdated"
 
+alias reeval-idea="rm ~/Library/Preferences/IntelliJIdea201*/eval/*.key"
+
 # ------------------------------------------------------------
 # Misc
 # ------------------------------------------------------------
