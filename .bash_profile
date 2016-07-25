@@ -24,9 +24,6 @@ export PATH=$HOMEBREW1:$PATH
 HOMEBREW2="/usr/local/sbin"
 export PATH=$HOMEBREW2:$PATH
 
-ANDROID_TOOLS="/usr/local/android-sdk/platform-tools"
-export PATH=$ANDROID_TOOLS:$PATH
-
 
 
 # ------------------------------------------------------------
@@ -47,7 +44,7 @@ export MAVEN_OPTS="-Xmx512m"
 
 export SCALA_HOME="/usr/local/opt/scala/libexec"
 
-export ANDROID_HOME="/usr/local/android-sdk"
+export ANDROID_HOME="/usr/local/opt/android-sdk"
 
 export GROOVY_HOME="/usr/local/opt/groovy/libexec"
 
