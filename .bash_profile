@@ -37,7 +37,7 @@ export PATH=$HOMEBREW2:$PATH
 # ------------------------------------------------------------
 # Export variables
 # ------------------------------------------------------------
-export EDITOR="/usr/bin/vi"
+export EDITOR="/usr/local/bin/vim"
 export JAVA_6_HOME=$(/usr/libexec/java_home -v1.6)
 export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
 export JAVA_HOME=$JAVA_8_HOME
