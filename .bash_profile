@@ -4,11 +4,19 @@
 #	http://geoff.greer.fm/lscolors/
 #	http://bashrcgenerator.com/
 # ------------------------------------------------------------
-GIT_PROMPT_START="\[\033[38;5;226m\]\t\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;60m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]"
-GIT_PROMPT_END="\n\[$(tput sgr0)\]\[\033[38;5;246m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+readonly PS_SYMBOL='$'
+readonly RESET="\[$(tput sgr0)\]"
+readonly FG_GRAY="\[\033[38;5;246m\]"
+readonly FG_BLACK="\[$(tput setaf 0)\]"
+readonly BG_CYAN="\[$(tput setab 14)\]"
+readonly BG_BLUE="\[$(tput setab 4)\]"
+readonly BG_RED="\[$(tput setab 9)\]"
+readonly BG_YELLOW="\[$(tput setab 11)\]"
+readonly TRIANGLE=$(echo -e "\xee\x82\xb0")
+GIT_PROMPT_START="$BG_RED$FG_BLACK \t $RESET$BG_YELLOW$FG_BLACK \u@\h $RESET$BG_CYAN$FG_BLACK \w $RESET"
+GIT_PROMPT_END="\n$FG_GRAY$PS_SYMBOL $RESET"
 
-export PS1=$GIT_PROMPT_START:$GIT_PROMPT_END
-#export PS1="\[\033[38;5;226m\]\t\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;60m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\n\[$(tput sgr0)\]\[\033[38;5;246m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+export PS1=$GIT_PROMPT_START$GIT_PROMPT_END
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
