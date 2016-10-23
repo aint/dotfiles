@@ -1,0 +1,21 @@
+[user]
+    name = Oleksandr Tyshkovets
+    email = olexandr.tyshkovets@gmail.com
+[color]
+    ui = true
+[core]
+    excludesfile = ~/.gitignore_global
+    #autocrlf = true
+[credential]
+    helper = cache --timeout=86400
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[merge]
+    tool = meld
+[http]
+    #proxy = http://79.136.250.38:3128
+[alias] 
+    ads = !git add . && git status
+    
