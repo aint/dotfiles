@@ -14,8 +14,12 @@
     prompt = false
 [merge]
     tool = meld
+	conflictstyle = diff3
 [http]
     #proxy = http://79.136.250.38:3128
 [alias] 
-    ads = !git add . && git status
-    
+    st = status --branch --short
+    ads = !git add . && git st
+    plog = log --graph --decorate --oneline -15
+    amend = commit --amend --no-edit
+    elog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
