@@ -90,7 +90,7 @@ alias java8="export JAVA_HOME=$JAVA_8_HOME"
 alias finderShowHidden="defaults write com.apple.finder ShowAllFiles TRUE"
 alias finderHideHidden="defaults write com.apple.finder ShowAllFiles FALSE"
 
-alias brew_update="brew update && echo '==> Cask Outdated' && cask-outdated"
+alias brew_update="brew update && echo '==> Cask Outdated' && brew cask outdated"
 
 alias reeval-idea="rm ~/Library/Preferences/IntelliJIdea201*/eval/*.key"
 
@@ -111,28 +111,6 @@ GIT_PROMPT_ONLY_IN_REPO=1
 #GIT_PROMPT_START="\[\033[38;5;226m\]\t\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;60m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;166m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]"
 #GIT_PROMPT_END="\n\[$(tput sgr0)\]\[\033[38;5;246m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
-function cask-outdated () {
-    local installed=$(brew cask list --versions)
-    if [ -z "$1" ]; then
-        echo "$installed" | while read line; do
-            local app=$(echo $line | awk '{print $1;}')
-            local latest=$(brew cask _stanza version $app)
-            local tests=$(echo $line | grep $latest)
-            if [ -z "$tests" ]; then
-                echo "$line < $latest"
-            fi
-        done
-    else
-        for arg in "$@"; do
-            local latest=$(brew cask _stanza version $arg)
-            local line=$(echo "$installed" | grep $arg)
-            local tests=$(echo $line | grep $latest)
-            if [ -z "$tests" ]; then
-                echo "$line < $latest"
-            fi
-        done
-    fi
-}
 
 function __clean-cask {
     caskBasePath="/usr/local/Caskroom"
