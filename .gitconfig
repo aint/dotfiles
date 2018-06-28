@@ -25,3 +25,4 @@
     elog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -15
     stsh = stash show -p stash@{0}
     ft = fetch -p
+    todo = grep -i -n todo
