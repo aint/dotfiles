@@ -47,17 +47,12 @@ export JAVA_HOME=$JAVA_8_HOME
 #export http_proxy=http://178.205.252.51:3128
 #export https_proxy=http://178.205.252.51:3128
 
-export M2_HOME="/usr/local/opt/maven/libexec"
 export MAVEN_OPTS="-Xmx512m"
-
-export SCALA_HOME="/usr/local/opt/scala/libexec"
-
+export M2_HOME="$HOME/.sdkman/candidates/maven/current"
+export GRADLE_HOME="$HOME/.sdkman/candidates/gradle/current"
+export SCALA_HOME="$HOME/.sdkman/candidates/scala/current"
+export GROOVY_HOME="$HOME/.sdkman/candidates/groovy/current"
 export ANDROID_HOME="/usr/local/opt/android-sdk"
-
-export GROOVY_HOME="/usr/local/opt/groovy/libexec"
-
-export GRADLE_HOME="/usr/local/opt/gradle/libexec"
-
 
 #export HOMEBREW_BUILD_FROM_SOURCE=1
 export HOMEBREW_NO_AUTO_UPDATE=1
