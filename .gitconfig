@@ -26,3 +26,4 @@
     stsh = stash show -p stash@{0}
     ft = fetch -p
     todo = grep -i -n todo
+    pushf = push --force-with-lease
