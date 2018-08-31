@@ -14,7 +14,7 @@
     prompt = false
 [merge]
     tool = meld
-	conflictstyle = diff3
+    conflictstyle = diff3
 [http]
     #proxy = http://79.136.250.38:3128
 [alias]
@@ -27,3 +27,5 @@
     ft = fetch -p
     todo = grep -i -n todo
     pushf = push --force-with-lease
+    cd = checkout develop
+    cm = checkout master
