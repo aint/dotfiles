@@ -30,3 +30,4 @@
     pushf = push --force-with-lease
     cd = checkout develop
     cm = checkout master
+    ch = !git checkout $1 && :
