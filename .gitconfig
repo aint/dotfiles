@@ -31,3 +31,4 @@
     cd = checkout develop
     cm = checkout master
     ch = !git checkout $1 && :
+    chs = !git stash -u && git checkout $1 && :
