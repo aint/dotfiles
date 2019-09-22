@@ -22,3 +22,22 @@ brew install \
     wget \
     zsh \
     zsh-autosuggestions
+
+# apps
+brew cask install \
+    copyq \
+    docker \
+    firefox \
+    font-iosevka \
+    font-meslo-nerd-font \
+    google-chrome \
+    imageoptim \
+    joplin \
+    keepassxc \
+    skype \
+    spectacle \
+    spotify \
+    sublime-text \
+    vienna \
+    visual-studio-code \
+    vlc
