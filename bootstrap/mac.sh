@@ -8,7 +8,6 @@ brew install \
     antibody \
     bat \
     cloc \
-    curl \
     diff-so-fancy \
     fzf \
     git \
