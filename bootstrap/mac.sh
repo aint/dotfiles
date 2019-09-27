@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 # install homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -40,3 +41,11 @@ brew cask install \
     vienna \
     visual-studio-code \
     vlc
+
+# JVM stuff
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk install maven
+sdk install gradle
+sdk install java
+
