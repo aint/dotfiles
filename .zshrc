@@ -1,11 +1,12 @@
-fpath=(/usr/local/share/zsh/functions/ $fpath)
-autoload -Uz compinit
-compinit -u
-
 source <(antibody init)
 antibody bundle zdharma/fast-syntax-highlighting
 antibody bundle romkatv/powerlevel10k
 antibody bundle zsh-users/zsh-autosuggestions
+antibody bundle zsh-users/zsh-completions
+
+fpath=(/usr/local/share/zsh/functions/ $fpath)
+autoload -Uz compinit
+compinit -u
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
