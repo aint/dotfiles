@@ -6,7 +6,7 @@ set -e
 
 # packages
 brew install \
-    antibody \
+    getantibody/tap/antibody \
     bat \
     cloc \
     diff-so-fancy \
