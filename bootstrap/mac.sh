@@ -21,7 +21,6 @@ brew install \
     tree \
     wget \
     zsh \
-    zsh-autosuggestions
 
 # apps
 brew cask install \
