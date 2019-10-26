@@ -22,6 +22,8 @@ brew install \
     wget \
     zsh \
 
+brew tap caskroom/fonts
+
 # apps
 brew cask install \
     copyq \
