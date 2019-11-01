@@ -50,3 +50,7 @@ sdk install maven
 sdk install gradle
 sdk install java
 
+# Configs
+mkdir ~/Pictures/Screen\ Shots
+defaults write com.apple.screencapture location "~/Pictures/Screen Shots"
+killall SystemUIServer
