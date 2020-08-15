@@ -1,9 +1,13 @@
 {
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-    "workbench.colorTheme": "Visual Studio Light",
-    "files.autoSave": "afterDelay",
-    "breadcrumbs.enabled": true,
-    "editor.fontFamily": "Fira Code",
+
+    "workbench.colorTheme": "Default Light+",
+
+    "editor.fontFamily": "Iosevka, monospace",
     "editor.fontLigatures": true,
+    "editor.fontSize": 13.5,
+
+    "files.autoSave": "afterDelay",
+    "files.trimTrailingWhitespace": true
 }
