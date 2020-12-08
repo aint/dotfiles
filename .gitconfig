@@ -32,3 +32,10 @@
     cm = checkout master
     ch = !git checkout $1 && :
     chs = !git stash -u && git checkout $1 && :
+
+
+# Find all commits containing a particular piece code    
+# $ git log -S "method_name" -p
+
+# Search the commit messages
+# $ git log --grep "commit message search"
