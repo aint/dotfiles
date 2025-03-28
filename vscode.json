@@ -1,13 +1,32 @@
 {
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
 
     "workbench.colorTheme": "Default Light+",
+    "workbench.tree.indent": 15,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.colorCustomizations": {
+        "tree.indentGuidesStroke": "#000000"
+    },
 
-    "editor.fontFamily": "Iosevka, monospace",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 13.5,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modifications",
+    "editor.inlineSuggest.enabled": true,
+    "editor.largeFileOptimizations": false,
+    // "editor.renderWhitespace": "all",
 
+    "files.trimTrailingWhitespace": true,
     "files.autoSave": "afterDelay",
-    "files.trimTrailingWhitespace": true
+
+    "github.copilot.editor.enableAutoCompletions": true,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": true,
+        "markdown": false,
+        "scminput": false
+    },
+
+    "dev.containers.dockerPath": "podman",
+    "dev.containers.dockerComposePath": "podman-compose",
+
+    "go.toolsManagement.autoUpdate": true,
 }
