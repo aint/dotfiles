@@ -1,0 +1,49 @@
+[user]
+	name = Oleksandr Tyshkovets
+	email = olexandr.tyshkovets@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global
+	hooksPath = ~/.config/git/hooks/
+	pager = delta
+	editor = vim
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[credential]
+	helper = cache --timeout=86400
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	light = true
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[help]
+	autocorrect = prompt
+[alias]
+	ads = !git add . && git status -s
+	plog = log --graph --pretty=format:'%C(auto)%h%Creset -%C(auto)%d%Creset %s %C(cyan)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -15
+	amend = commit --amend --no-edit
+	stsh = stash show -p stash@{0}
+	todo = grep -i -n todo
+	pushf = push --force-with-lease
+	sm = switch main

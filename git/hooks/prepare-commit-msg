@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Get the current branch name
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+
+# Check if branch name matches pattern OW-XXXXX
+if [[ $BRANCH_NAME =~ ^OW-[0-9]+ ]]; then
+    # Extract ticket number
+    TICKET_NUMBER=${BASH_REMATCH[0]}
+
+    # Get the commit message file path
+    COMMIT_MSG_FILE=$1
+
+    # Read the current commit message
+    COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+    # If commit message doesn't already start with ticket number, add it
+    if [[ ! $COMMIT_MSG =~ ^$TICKET_NUMBER ]]; then
+        echo "$TICKET_NUMBER: $COMMIT_MSG" > "$COMMIT_MSG_FILE"
+    fi
+fi
