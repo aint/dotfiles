@@ -1,8 +1,6 @@
-## Bootstrap
+## Bootstrap your new Mac
 
-macOS
 ```bash
-$ curl -O -L https://raw.githubusercontent.com/aint/dotfiles/master/bootstrap/mac.sh
-$ ./mac.sh
+$ curl -O -L https://raw.githubusercontent.com/aint/dotfiles/master/bootstrap.sh
+$ ./bootstrap.sh
 ```
-
