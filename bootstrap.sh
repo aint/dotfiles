@@ -7,7 +7,7 @@ defaults write com.apple.screencapture location "~/Desktop/Screen Shots"
 killall SystemUIServer
 
 echo 'zsh configs'
-lm -s $(pwd)/.zshrc ~/.zshrc
+ln -s $(pwd)/.zshrc ~/.zshrc
 
 echo 'git configs'
 ln -sf $(pwd)/git/.git* ~/
