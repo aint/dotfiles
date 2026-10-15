@@ -1,13 +1,11 @@
-export PATH="/opt/homebrew/bin:$PATH"
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
-brew_prefix=$(brew --prefix)
-
-fpath+=("$brew_prefix/share/zsh/site-functions")
+fpath+=("$HOMEBREW_PREFIX/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
 
-source $brew_prefix/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source <(fzf --zsh)
 
