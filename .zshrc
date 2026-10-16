@@ -2,6 +2,7 @@ eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
 fpath+=("$HOMEBREW_PREFIX/share/zsh/site-functions")
 autoload -U promptinit; promptinit
+autoload -U compinit; compinit
 prompt pure
 
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
