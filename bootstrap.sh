@@ -1,41 +1,42 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo -e "${RED}macos configs${NC}"
-mkdir -p ~/Desktop/Screen\ Shots
-defaults write com.apple.screencapture location '~/Desktop/Screen Shots'
-killall SystemUIServer
+DOTFILES="${HOME}/Workspace/dotfiles"
 
-echo -e "${RED}install homebrew${NC}"
-which -s brew
-if [[ $? != 0 ]] ; then
-    echo -e "${RED}install homebrew${NC}"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-    echo -e "${RED}brew already installed${NC}"
+if [[ "$(uname -m)" != "arm64" ]]; then
+    echo "This script supports Apple Silicon Macs only" >&2
+    exit 1
 fi
 
-echo -e "${RED}install git${NC}"
+echo -e "${RED}0. configuring screenshot folder${NC}"
+mkdir -p "${HOME}/Desktop/Screen Shots"
+defaults write com.apple.screencapture location "${HOME}/Desktop/Screen Shots"
+killall SystemUIServer || true
+
+echo -e "${RED}1. installing brew${NC}"
+if [[ ! -x /opt/homebrew/bin/brew ]]; then
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+echo -e "${RED}2. installing git${NC}"
 brew install git
 
-echo -e "${RED}create workspace and clone dotfiles repo${NC}"
-mkdir -p ~/Workspace && cd ~/Workspace
-rm -fr dotfiles/ && git clone https://github.com/aint/dotfiles.git && cd dotfiles
+echo -e "${RED}3. cloning dotfiles${NC}"
+mkdir -p "${HOME}/Workspace"
+if [[ -d "${DOTFILES}/.git" ]]; then
+    echo -e "${RED}dotfiles already cloned${NC}"
+else
+    # Ignore an existing global insteadOf rewrite so this clone stays on HTTPS.
+    GIT_CONFIG_GLOBAL=/dev/null git clone https://github.com/aint/dotfiles.git "${DOTFILES}"
+fi
 
-echo -e "${RED}zsh configs${NC}"
-rm -f ~/.zshrc && ln -s $(pwd)/.zshrc ~/.zshrc
-
-echo -e "${RED}git configs${NC}"
-rm -f ~/.gitconfig && ln -sf $(pwd)/git/.gitconfig ~/.gitconfig
-rm -f ~/.gitignore_global && ln -sf $(pwd)/git/.gitignore_global ~/.gitignore_global
-rm -fr ~/.config/git && mkdir -p ~/.config/git/hooks/
-ln -sf $(pwd)/git/hooks/* ~/.config/git/hooks/
-
-echo -e "${RED}install brew packages${NC}"
+echo -e "${RED}4. installing brew packages and casks${NC}"
 brew install \
+    pure \
     zsh-autosuggestions \
     zsh-syntax-highlighting \
     lazygit \
@@ -44,30 +45,37 @@ brew install \
     jq \
     fzf \
     podman \
-    podman-compose \
+    podman-compose
 
-echo -e "${RED}lazygit configs${NC}"
-mkdir -p ~/Library/Application\ Support/lazygit/
-rm -f ~/Library/Application\ Support/lazygit/config.yml
-ln -s $(pwd)/git/lazygit.yml ~/Library/Application\ Support/lazygit/config.yml
-
-echo -e "${RED}install brew casks${NC}"
-brew install \
-    firefox \
+brew install --cask \
     zed \
     visual-studio-code \
     dbeaver-community \
     keepassxc \
-    restfox \
-    pinta \
-    flameshot \
     imageoptim \
     maccy
 
-echo -e "${RED}vscode configs${NC}"
-rm -fr ~/Library/Application\ Support/Code/
-mkdir -p ~/Library/Application\ Support/Code/User/snippets/
-ln -s $(pwd)/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-ln -s $(pwd)/vscode/snippets/*.json ~/Library/Application\ Support/Code/User/snippets/
+echo -e "${RED}5. configuring zsh, git, lazygit, ssh, vscode${NC}"
+ln -sfn "${DOTFILES}/.zshrc" "${HOME}/.zshrc"
+
+ln -sfn "${DOTFILES}/git/.gitconfig" "${HOME}/.gitconfig"
+ln -sfn "${DOTFILES}/git/.gitignore_global" "${HOME}/.gitignore_global"
+mkdir -p "${HOME}/.config/git/hooks"
+for hook in "${DOTFILES}/git/hooks/"*; do
+    ln -sfn "${hook}" "${HOME}/.config/git/hooks/$(basename "${hook}")"
+done
+
+mkdir -p "${HOME}/Library/Application Support/lazygit"
+ln -sfn "${DOTFILES}/git/lazygit.yml" "${HOME}/Library/Application Support/lazygit/config.yml"
+
+mkdir -p "${HOME}/.ssh"
+chmod 700 "${HOME}/.ssh"
+ln -sfn "${DOTFILES}/ssh/config" "${HOME}/.ssh/config"
+
+mkdir -p "${HOME}/Library/Application Support/Code/User/snippets"
+ln -sfn "${DOTFILES}/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
+for snippet in "${DOTFILES}/vscode/snippets/"*.json; do
+    ln -sfn "${snippet}" "${HOME}/Library/Application Support/Code/User/snippets/$(basename "${snippet}")"
+done
 
 echo -e "${RED}DONE${NC}"
